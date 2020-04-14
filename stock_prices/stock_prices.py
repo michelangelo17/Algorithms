@@ -4,16 +4,19 @@ import argparse
 
 
 def find_max_profit(prices):
+
     # find min and max values and index
     min_price = min(prices)
     max_price = max(prices)
     min_index = prices.index(min_price)
     max_index = prices.index(max_price)
     end_index = len(prices) - 1
+
     # optimisation in case min and max are arranged ideally
     if min_index < max_index:
         return max_price - min_price
     else:
+
         # set default values to first and last array pairs
         # this way, negative values handled correctly
         best_with_max = prices[1] - prices[0]
@@ -26,7 +29,7 @@ def find_max_profit(prices):
                 best_with_max = test_with_max
 
         # test with values to the right of min_index
-        for j in range(min_index + 1, end_index):
+        for j in range(min_index + 1, end_index - 1):
             test_with_min = prices[j] - min_price
             if test_with_min > best_with_min:
                 best_with_min = test_with_min
