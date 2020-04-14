@@ -9,7 +9,7 @@ def find_max_profit(prices):
     max_price = max(prices)
     min_index = prices.index(min_price)
     max_index = prices.index(max_price)
-
+    end_index = len(prices) - 1
     # optimisation in case min and max are arranged ideally
     if min_index < max_index:
         return max_price - min_price
@@ -17,8 +17,7 @@ def find_max_profit(prices):
         # set default values to first and last array pairs
         # this way, negative values handled correctly
         best_with_max = prices[1] - prices[0]
-        best_with_min = prices[len(
-            prices) - 1] - prices[len(prices) - 2]
+        best_with_min = prices[end_index] - prices[end_index - 1]
 
         # test with values to the left of max index
         for i in range(1, max_index):
@@ -27,7 +26,7 @@ def find_max_profit(prices):
                 best_with_max = test_with_max
 
         # test with values to the right of min_index
-        for j in range(min_index + 1, len(prices) - 1):
+        for j in range(min_index + 1, end_index):
             test_with_min = prices[j] - min_price
             if test_with_min > best_with_min:
                 best_with_min = test_with_min
