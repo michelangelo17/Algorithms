@@ -7,6 +7,7 @@ def rock_paper_scissors(n):
     # create nested lists times amount
     # ex: n = 2 results -> [['rock', 'paper', 'scissors'], ['rock', 'paper', 'scissors']]
     moves_lists = [['rock', 'paper', 'scissors']] * n
+    # nested to give us an empty array as first x value in comprehension below
     result = [[]]
     # for each array in nested moves array
     for moves in moves_lists:
