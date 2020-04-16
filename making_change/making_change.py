@@ -7,7 +7,7 @@ sys.setrecursionlimit(10**5)
 
 def making_change(amount, denominations, cache={1: {}, 5: {}, 10: {}, 25: {}, 50: {}}):
     # in below loop, the beginning of the list is changed as it goes through
-    # sets current_coint to beggining of that array to use with cache dictionary
+    # sets current_coin to beginning of that array to use with cache dictionary
     current_coin = denominations[0]
     # checks cache for amount with list beggining with current coin
     if amount in cache[current_coin]:
@@ -43,10 +43,14 @@ if __name__ == "__main__":
     else:
         print("Usage: making_change.py [amount]")
 
-# would be nice, but recursion depth exceeds limits
+# solution without comments:
+# import sys
+# sys.setrecursionlimit(10**5)
+
 # def making_change(amount, denominations, cache={1: {}, 5: {}, 10: {}, 25: {}, 50: {}}):
-#     if amount in cache[denominations[0]]:
-#         return cache[denominations[0]][amount]
+#     current_coin = denominations[0]
+#     if amount in cache[current_coin]:
+#         return cache[current_coin][amount]
 #     count = 0
 #     if amount < 0:
 #         return 0
@@ -54,5 +58,5 @@ if __name__ == "__main__":
 #         return 1
 #     for i, coin in enumerate(denominations):
 #         count += making_change(amount - coin, denominations[i:])
-#     cache[denominations[0]][amount] = count
+#     cache[current_coin][amount] = count
 #     return count
